@@ -7,13 +7,34 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'csv'
 Style.destroy_all
+Brewery.destroy_all
 
 # add style info to db
 styles_csv = File.read(Rails.root.join('lib', 'seeds', 'styles.csv'))
 styles_csv_parsed = CSV.parse(styles_csv, headers: true)
 
 styles_csv_parsed.each do |row|
-  Style.create(name: row.to_hash['style_name'])
+  style = Style.create(name: row.to_hash['style_name'])
   puts "Added value: #{row.to_hash['style_name']} to Style Table"
+  if style.save
+    puts "Added value: #{row.to_hash['style_name']} to Style Table"
+  else
+    puts "Could not add value: #{row.to_hash['style_name']} to Style Table"
+  end
 end
 
+# add brewery info to db
+brewery_csv = File.read(Rails.root.join('lib', 'seeds', 'breweries.csv'))
+brewery_csv_parsed = CSV.parse(brewery_csv, headers: true)
+brewery_csv_parsed.each do |row|
+  brew = Brewery.new(name: row.to_hash['name'],
+                     address: row.to_hash['address1'],
+                     city: row.to_hash['city'],
+                     state: row.to_hash['state'],
+                     country: row.to_hash['country'])
+  if brew.save
+    puts "Added value: #{row.to_hash['name']} to Brewery Table"
+  else
+    puts "Could not add value: #{row.to_hash['name']} to Brewery Table"
+  end
+end
