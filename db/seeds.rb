@@ -6,8 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'csv'
+
 Style.destroy_all
 Brewery.destroy_all
+Beer.destroy_all
 
 # add style info to db
 styles_csv = File.read(Rails.root.join('lib', 'seeds', 'styles.csv'))
@@ -36,5 +38,22 @@ brewery_csv_parsed.each do |row|
     puts "Added value: #{row.to_hash['name']} to Brewery Table"
   else
     puts "Could not add value: #{row.to_hash['name']} to Brewery Table"
+  end
+end
+
+
+# add beer info to db
+beers_csv = File.read(Rails.root.join('lib', 'seeds', 'beers.csv'))
+beers_csv_parsed = CSV.parse(beers_csv, headers: true)
+beers_csv_parsed.each do |row|
+  beer = Brewery.new(name: row.to_hash['name'],
+                     description: row.to_hash['description'],
+                     style_id: row.to_hash['style_id'],
+                     abv: row.to_hash['abv'],
+                     brewery_id: row.to_hash['brewery_id'])
+  if beer.save
+    puts "Added value: #{row.to_hash['name']} to Beer Table"
+  else
+    puts "Could not add value: #{row.to_hash['name']} to Beer Table"
   end
 end
