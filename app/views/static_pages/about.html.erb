@@ -1,2 +1,25 @@
 <h1>About Page</h1>
-<p>Find me in app/views/static_pages/about.html.erb</p>
+<h3>About the data</h3>
+<p>This is my Beertopia web app. I gathered data from <a href="http://openbeerdb.com/">HERE</a>. Their api is under maintenance
+so I had to download some csv files for the data.</p>
+
+<p>This data is about beer and breweries. The data will be in 3 tables: Beer, Style, and Brewery </p>
+<p>The Beer table will contain the id of a beer, its name, a description,
+  a style reference, an ABV (alcohol by volume), and a brewery reference.<br/>
+
+  The Style table will contain an id and a style name. A beer can have one styles, and a style can belong to one or more beers.
+  <br/>
+  A Brewery will have an id, a brewery name, address, city, state, and a country. A beer belongs to one brewery,
+  but a brewery can have one or many beers associated with it.
+  <br/>
+  Note: State is state/province/region, as the data is global.
+  <br/>
+</p>
+
+<br/>
+
+<h3>Entity Relationship Diagram</h3>
+<p>
+  <%= image_tag("/beer_erd.png", :alt => "Entity Relationship") %>
+</p>
+
