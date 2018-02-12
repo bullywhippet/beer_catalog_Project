@@ -2,6 +2,7 @@
 
 <h1>Breweries</h1>
 
+
 <table>
   <thead>
     <tr>
@@ -18,20 +19,23 @@
   <tbody>
     <% @breweries.each do |brewery| %>
       <tr>
-        <td><%= brewery.name %></td>
-        <td><%= brewery.address %></td>
-        <td><%= brewery.city %></td>
-        <td><%= brewery.state %></td>
-        <td><%= brewery.state %></td>
-        <td><%= brewery.country %></td>
-        <td><%= link_to 'Show', brewery %></td>
-        <td><%= link_to 'Edit', edit_brewery_path(brewery) %></td>
-        <td><%= link_to 'Destroy', brewery, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td><%= brewery.name %></td>
+      <td><%= brewery.address %></td>
+      <td><%= brewery.city %></td>
+      <td><%= brewery.state %></td>
+      <td><%= brewery.state %></td>
+      <td><%= brewery.country %></td>
+      <td><%= link_to 'Show', brewery %></td>
+      <td><%= link_to 'Edit', edit_brewery_path(brewery) %></td>
+      <td><%= link_to 'Destroy', brewery, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-    <% end %>
+      <% end %>
   </tbody>
 </table>
+<%= paginate @breweries %>
+
+<%= page_entries_info @breweries %>
 
 <br>
 
-<%= link_to 'New Brewery', new_brewery_path %>
+<!--<%= link_to 'New Brewery', new_brewery_path %>-->
