@@ -35,6 +35,8 @@ gem 'jbuilder', '~> 2.5'
 
 # gem for pagination
 gem 'kaminari'
+# to reset pks
+gem 'activerecord-reset-pk-sequence'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
