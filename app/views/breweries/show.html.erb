@@ -30,5 +30,7 @@
   <%= @brewery.country %>
 </p>
 
+<%= image_tag google_map(center:  [@brewery.address + ',' + @brewery.city] ) %>
+<br>
 <%= link_to 'Edit', edit_brewery_path(@brewery) %> |
 <%= link_to 'Back', breweries_path %>
