@@ -37,6 +37,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'kaminari'
 # to reset pks
 gem 'activerecord-reset-pk-sequence'
+# not many items had descriptions
+gem 'faker'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
