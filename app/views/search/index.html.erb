@@ -1,0 +1,13 @@
+<h1>Search Results</h1>
+
+<p>Your search for: <strong><%= @query.delete('%')%></strong> found
+  <%= pluralize @found_beer.size, 'beers' %>
+</p>
+
+<ul>
+  <% @found_beer.find_each do |beer| %>
+    <li>
+      <%= link_to beer.name, beer %>
+    </li>
+  <% end %>
+</ul>
