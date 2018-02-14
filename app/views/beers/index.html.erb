@@ -9,7 +9,11 @@
       <th>Description</th>
       <th>Style</th>
       <th>Abv</th>
-      <th>Bewery</th>
+      <th>Brewery</th>
+      <th>Brewery Address</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Country</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -22,6 +26,10 @@
         <td><%= beer.style.name %></td>
         <td><%= beer.abv %></td>
         <td><%= beer.brewery.name %></td>
+        <td><%= beer.brewery.address %></td>
+        <td><%= beer.brewery.city %></td>
+        <td><%= beer.brewery.state %></td>
+        <td><%= beer.brewery.country %></td>
         <td><%= link_to 'Show', beer %></td>
         <td><%= link_to 'Edit', edit_beer_path(beer) %></td>
         <td><%= link_to 'Destroy', beer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -29,6 +37,9 @@
     <% end %>
   </tbody>
 </table>
+<%= paginate @beers %>
+
+<%= page_entries_info @beers %>
 
 <br>
 

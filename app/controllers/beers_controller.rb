@@ -4,7 +4,7 @@ class BeersController < ApplicationController
   # GET /beers
   # GET /beers.json
   def index
-    @beers = Beer.all
+    @beers = Beer.page(params[:page]).per(10)
   end
 
   # GET /beers/1
