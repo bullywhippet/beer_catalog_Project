@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>BeerCatalog</title>
+    <title>Beer Catalog</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -9,6 +9,13 @@
   </head>
 
   <body>
+  <ul>
+    <li><%= link_to 'Home', static_pages_home_path %> </li>
+    <li><%= link_to 'Styles', styles_path %></li>
+    <li><%= link_to 'Breweries', breweries_path %></li>
+    <li><%= link_to 'Beers', beers_path %></li>
+    <li><%= link_to 'About', static_pages_about_path %> </li>
+  </ul>
     <%= yield %>
   </body>
 </html>
