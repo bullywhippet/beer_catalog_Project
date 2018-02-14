@@ -1,9 +1,19 @@
 <p id="notice"><%= notice %></p>
 
+<h1>Style</h1>
+
 <p>
   <strong>Name:</strong>
   <%= @style.name %>
 </p>
+<% unless @style.beers.blank? %>
+  <p>
+    <strong>Beers Of this style:</strong>
 
-<%= link_to 'Edit', edit_style_path(@style) %> |
-<%= link_to 'Back', styles_path %>
+    <%  @style.beers.each do |beer| %>
+      <%= link_to beer.name, beer %> |
+    <% end %>
+  </p>
+<% end %>
+<p><%= link_to 'Back', styles_path %></p>
+

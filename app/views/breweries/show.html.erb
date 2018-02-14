@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
 
+<h1>Brewery Details</h1>
 <p>
   <strong>Name:</strong>
   <%= @brewery.name %>
@@ -21,16 +22,26 @@
 </p>
 
 <p>
-  <strong>State:</strong>
-  <%= @brewery.state %>
-</p>
-
-<p>
   <strong>Country:</strong>
   <%= @brewery.country %>
 </p>
+<p>
+  <strong>Beers Available:</strong>
+  <%  @brewery.beers.each do |beer| %>
 
-<%= image_tag google_map(center:  [@brewery.address + ',' + @brewery.city] ) %>
-<br>
-<%= link_to 'Edit', edit_brewery_path(@brewery) %> |
-<%= link_to 'Back', breweries_path %>
+    <%= link_to beer.name, beer %> |
+  <% end %>
+</p>
+<p>
+  <strong>Map:</strong>
+  <br/>
+  <% if @brewery.address %>
+    <%= image_tag google_map(@brewery.address.delete(' ') + ',' + @brewery.city), alt: "map" %>
+  <% else %>
+    No address could be found. Map could not be rendered
+  <% end %>
+</p>
+
+<br/>
+<p><%= link_to 'Back', breweries_path %></p>
+

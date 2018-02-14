@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
 
+<h1><%= image_tag('bottle.png', alt: 'bottle') %><%= @beer.name %></h1>
 <p>
   <strong>Name:</strong>
   <%= @beer.name %>
@@ -12,7 +13,7 @@
 
 <p>
   <strong>Style:</strong>
-  <%= @beer.style_id %>
+  <%= link_to @beer.style.name, @beer.style %>
 </p>
 
 <p>
@@ -22,8 +23,11 @@
 
 <p>
   <strong>Brewery:</strong>
-  <%= @beer.brewery_id %>
+  <%= link_to @beer.brewery.name, @beer.brewery %>
+ (<%= @beer.brewery.address %>,
+  <%= @beer.brewery.city %>,
+  <%= @beer.brewery.state %>,
+  <%= @beer.brewery.country %>)
 </p>
 
-<%= link_to 'Edit', edit_beer_path(@beer) %> |
 <%= link_to 'Back', beers_path %>

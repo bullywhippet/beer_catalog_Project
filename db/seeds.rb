@@ -58,16 +58,16 @@ end
 puts " >> Created #{Brewery.count} records"
 
 
-beers_csv_parsed.each do |thing|
+beers_csv_parsed.each do |b|
 
   random_description = "Surprisingly contains #{Faker::Beer.malts}"
 
-  style_ref = Style.find(thing.to_hash['style_id'])
-  brewery = Brewery.find(thing.to_hash['brewery_id'])
-  beer = brewery.beers.create(name: thing.to_hash['name'],
+  style_ref = Style.find(b.to_hash['style_id'])
+  brewery = Brewery.find(b.to_hash['brewery_id'])
+  beer = brewery.beers.create(name: b.to_hash['name'],
                               description: random_description,
                               style: style_ref,
-                              abv: thing.to_hash['abv'])
+                              abv: b.to_hash['abv'])
 
   printf("\r  Creating records: %s", spinner.next)
 end
